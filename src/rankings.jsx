@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './FootballStandingsTable.css';
+//import './FootballStandingsTable.css';
 
 const FootballStandingsTable = () => {
   const [standings, setStandings] = useState([]);

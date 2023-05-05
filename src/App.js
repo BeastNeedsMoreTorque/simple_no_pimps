@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import _ from 'lodash';
 import pimps from './shared/pimps_long.json';
-import {calculateStandings} from './shared/helpers'
+import {calculateStandings} from './shared/helpers2'
 import {Loader} from './shared/Loader'
 
 const options = {
