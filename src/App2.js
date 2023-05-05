@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import axios from 'axios'
+import axios from 'axios';
 
 import _ from 'lodash';
 import pimps from './shared/pimps_long.json';
-import {calculateStandings} from './shared/helpers'
-import {Loader} from './shared/Loader'
+import { calculateStandings } from './shared/helpers';
+import { Loader } from './shared/Loader';
+import useFetch from './shared/useFetch';
 
 const options = {
   method: 'GET',
@@ -15,34 +16,26 @@ const options = {
 };
 const BASE_URL = 'https://api.football-data.org/v2/';
 
-
-
 function App() {
-  const [matches, setMatches] = useState([]);
+  const [data, loading] = useFetch(
+    `${BASE_URL}competitions/2021/matches`,
+    options
+  );
+  const [matches, setMatches] = useState(data);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     // Fetch matches from the API
-    const fetchMatches = async () => {
-      try {
-        const response = await axios.get(
-          `${BASE_URL}competitions/2021/matches`,
-          options
-        );
-        const results = response.data.matches.filter(
-          (p) =>
-            !pimps.includes(p.homeTeam.name) && !pimps.includes(p.awayTeam.name)
-        );
-        setMatches(results);
-        setIsLoading(false)
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchMatches();
-  }, []);
+    if (data) {
+      const results = data.data.matches.filter(
+        (p) =>
+          !pimps.includes(p.homeTeam.name) && !pimps.includes(p.awayTeam.name)
+      );
+      setMatches(results);
+      setIsLoading(false);
+    }
+  }, [data]);
 
   function gameStatus(x) {
     return x === 'FINISHED';
@@ -71,12 +64,12 @@ function App() {
       })
     );
 
-    console.log("finishedGames: ", finishedGames);
+  console.log('finishedGames: ', finishedGames);
 
   // setStandings(calculateStandings(finishedGames))
-  const tableStandings = calculateStandings(finishedGames)
+  const tableStandings = calculateStandings(finishedGames);
   // console.log("tableStandings: ", JSON.stringify(tableStandings,null,2))
-  
+
   return (
     <div className='App container mx-auto max-w-screen-xl px-2'>
       <h2 className='"text-2xl w-full" px-2 pt-8 pb-8 text-center font-extrabold md:text-4xl lg:text-5xl'>
@@ -118,7 +111,7 @@ function App() {
                     {match.team}
                   </td>
                 ) : match.team === 'West Ham United FC' ? (
-                  <td className='border-b bg-white p-1 font-extrabold text-burgundy text-xl text-left'>
+                  <td className='border-b bg-white p-1 text-left text-xl font-extrabold text-burgundy'>
                     {match.team}
                   </td>
                 ) : (
