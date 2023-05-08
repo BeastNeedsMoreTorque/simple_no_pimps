@@ -15,6 +15,7 @@ export const calculateStandings = (matches) => {
           goalsFor: 0,
           goalsAgainst: 0,
           points: 0,
+          pointsArray: [],
           form: [],
         }),
         _.set([match.awayTeam], {
@@ -26,6 +27,7 @@ export const calculateStandings = (matches) => {
           goalsFor: 0,
           goalsAgainst: 0,
           points: 0,
+          pointsArray: [],
           form: [],
         })
       )(result);
@@ -39,23 +41,29 @@ export const calculateStandings = (matches) => {
     (result, match) => {
       if (match.outcome === 'HOME_TEAM') {
         result[match.homeTeam].points += 3;
+        result[match.homeTeam].pointsArray.push(result[match.homeTeam].points);
         result[match.homeTeam].wins += 1;
         result[match.homeTeam].form.push('w');
         result[match.awayTeam].points += 0;
+        result[match.awayTeam].pointsArray.push(result[match.awayTeam].points);
         result[match.awayTeam].losses += 1;
         result[match.awayTeam].form.push('l');
       } else if (match.outcome === 'DRAW') {
         result[match.homeTeam].points += 1;
+        result[match.homeTeam].pointsArray.push(result[match.homeTeam].points);
         result[match.homeTeam].draws += 1;
         result[match.homeTeam].form.push('d');
         result[match.awayTeam].points += 1;
+        result[match.awayTeam].pointsArray.push(result[match.awayTeam].points);
         result[match.awayTeam].draws += 1;
         result[match.awayTeam].form.push('d');
       } else if (match.outcome === 'AWAY_TEAM') {
         result[match.homeTeam].points += 0;
+        result[match.homeTeam].pointsArray.push(result[match.homeTeam].points);
         result[match.homeTeam].losses += 1;
         result[match.homeTeam].form.push('l');
         result[match.awayTeam].points += 3;
+        result[match.awayTeam].pointsArray.push(result[match.awayTeam].points);
         result[match.awayTeam].wins += 1;
         result[match.awayTeam].form.push('w');
       }
@@ -70,7 +78,7 @@ export const calculateStandings = (matches) => {
     initialStandings,
     matches
   );
-
+    console.log('intialStandings', initialStandings);
   // Use Lodash/fp to convert the object to an array and sort by points
   const sortedStandings = _.flow(
     _.values,

@@ -5,6 +5,8 @@ import axios from 'axios'
 import _ from 'lodash';
 import pimps from './shared/pimps_long.json';
 import {calculateStandings} from './shared/helpers2'
+import {rankStandings} from './shared/ranked_standings'
+import {myStandingsTable} from './shared/moreRanking'
 import {Loader} from './shared/Loader'
 
 const options = {
@@ -71,12 +73,15 @@ function App() {
       })
     );
 
-    console.log("finishedGames: ", finishedGames);
+    // console.log("finishedGames: ", finishedGames);
 
   // setStandings(calculateStandings(finishedGames))
-  const tableStandings = calculateStandings(finishedGames)
+  //const tableStandings = calculateStandings(finishedGames)
+  const tableStandings = myStandingsTable(finishedGames)
   // console.log("tableStandings: ", JSON.stringify(tableStandings,null,2))
   
+  // console.log("rankStandings: ", JSON.stringify(rankStandings(tableStandings), null,2));
+
   return (
     <div className='App container mx-auto max-w-screen-xl px-2'>
       <h2 className='"text-2xl w-full" px-2 pt-8 pb-8 text-center font-extrabold md:text-4xl lg:text-5xl'>
