@@ -73,11 +73,11 @@ function App() {
       })
     );
 
-    // console.log("finishedGames: ", finishedGames);
+    console.log("finishedGames: ", finishedGames);
 
   // setStandings(calculateStandings(finishedGames))
-  //const tableStandings = calculateStandings(finishedGames)
-  const tableStandings = myStandingsTable(finishedGames)
+  const tableStandings = calculateStandings(finishedGames)
+  // const tableStandings = myStandingsTable(finishedGames)
   // console.log("tableStandings: ", JSON.stringify(tableStandings,null,2))
   
   // console.log("rankStandings: ", JSON.stringify(rankStandings(tableStandings), null,2));
@@ -95,6 +95,7 @@ function App() {
             <tr className='text-left'>
               <th>Position</th>
               <th className='team-header'>Team</th>
+              <th className='p-1 pb-2 text-center'>Rank</th>
               <th className='p-1 pb-2 text-center'>GP</th>
               <th className='p-1 pb-2 text-center'>W</th>
               <th className='p-1 pb-2 text-center'>D</th>
@@ -123,7 +124,7 @@ function App() {
                     {match.team}
                   </td>
                 ) : match.team === 'West Ham United FC' ? (
-                  <td className='border-b bg-white p-1 font-extrabold text-burgundy text-xl text-left'>
+                  <td className='border-b bg-white p-1 text-left text-xl font-extrabold text-burgundy'>
                     {match.team}
                   </td>
                 ) : (
@@ -131,6 +132,15 @@ function App() {
                     {match.team}
                   </td>
                 )}
+                <td className='p-1 text-center'>
+                  <div>
+                    { _.takeRight(match.pointsArray, 2).map(p => (
+                      p[0] < p[1] ? 'up' : p[0] > p[1] ? 'dwn' : '-' 
+                    ))
+                    }
+                  </div>
+                </td>
+                <td className='p-1 text-center'>{match.gp}</td>
                 <td className='p-1 text-center'>{match.gp}</td>
                 <td className='p-1 text-center'>{match.wins}</td>
                 <td className='p-1 text-center'>{match.draws}</td>
