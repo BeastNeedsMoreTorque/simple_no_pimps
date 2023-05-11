@@ -78,7 +78,7 @@ function App() {
   // setStandings(calculateStandings(finishedGames))
   // const tableStandings = calculateStandings(finishedGames)
   const tableStandings = myStandingsTable(finishedGames)
-  // console.log("tableStandings: ", JSON.stringify(tableStandings,null,2))
+  console.log("tableStandings: ", JSON.stringify(tableStandings,null,2))
   
   // console.log("rankStandings: ", JSON.stringify(rankStandings(tableStandings), null,2));
 
