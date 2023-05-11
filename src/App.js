@@ -68,8 +68,8 @@ function App() {
         outcome: m.score.winner,
         //dataDay: dataDay,
         //time: time,
-        awayGoals: m.score.fullTime.awayTeam,
-        homeGoals: m.score.fullTime.homeTeam,
+        awayScore: m.score.fullTime.awayTeam,
+        homeScore: m.score.fullTime.homeTeam,
       })
     );
 
