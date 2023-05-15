@@ -39,6 +39,7 @@ const getTeamStats = _.flow(
     const goalsAgainst = _.sumBy('opponentScore', games);
     const goalDiff = goalsFor - goalsAgainst;
     const points = wins * 3 + draws;
+    // const formArray = _.flow(_.filter({winner: true}), );
     return {
       games: games.length,
       wins,
@@ -48,6 +49,7 @@ const getTeamStats = _.flow(
       goalsAgainst,
       goalDiff,
       points,
+      // formArray,
     };
   })
 );

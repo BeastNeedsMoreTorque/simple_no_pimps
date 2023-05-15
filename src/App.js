@@ -9,10 +9,12 @@ import {rankStandings} from './shared/ranked_standings'
 import {myStandingsTable} from './shared/moreRanking'
 import {Loader} from './shared/Loader'
 
+const apiKey = process.env.REACT_APP_FOOTBAL_API_KEY;
+
 const options = {
   method: 'GET',
   headers: {
-    'X-Auth-Token': '6514a50db6064d86a774da3072668946',
+    'X-Auth-Token': apiKey,//'6514a50db6064d86a774da3072668946',
   },
 };
 const BASE_URL = 'https://api.football-data.org/v2/';
@@ -140,8 +142,7 @@ function App() {
                     }
                   </div>
                 </td>
-                <td className='p-1 text-center'>{match.gp}</td>
-                <td className='p-1 text-center'>{match.gp}</td>
+                <td className='p-1 text-center'>{match.games}</td>
                 <td className='p-1 text-center'>{match.wins}</td>
                 <td className='p-1 text-center'>{match.draws}</td>
                 <td className='p-1 text-center'>{match.losses}</td>
