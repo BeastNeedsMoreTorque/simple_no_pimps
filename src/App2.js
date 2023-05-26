@@ -8,10 +8,12 @@ import { calculateStandings } from './shared/helpers';
 import { Loader } from './shared/Loader';
 import useFetch from './shared/useFetch';
 
+const apiKey = process.env.REACT_APP_FOOTBAL_API_KEY;
+
 const options = {
   method: 'GET',
   headers: {
-    'X-Auth-Token': '6514a50db6064d86a774da3072668946',
+    'X-Auth-Token': apiKey,
   },
 };
 const BASE_URL = 'https://api.football-data.org/v2/';
