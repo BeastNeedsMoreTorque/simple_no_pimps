@@ -1,0 +1,55 @@
+"id": 329400,
+            "utcDate": "2022-05-14T13:30:00Z",
+            "status": "FINISHED",
+            "minute": "90",
+            "injuryTime": 5,
+            "attendance": null,
+            "venue": "Signal Iduna Park",
+            "matchday": 34,
+            "stage": "REGULAR_SEASON",
+            "group": null,
+            "lastUpdated": "2022-05-15T03:33:01Z",
+            "homeTeam": {
+                "id": 4,
+                "name": "Borussia Dortmund",
+                "shortName": "Dortmund",
+                "tla": "BVB",
+                "crest": "https://crests.football-data.org/4.png",
+                "coach": {
+                    "id": 15111,
+                    "name": "Marco Rose",
+                    "nationality": "Germany"
+                },
+                "leagueRank": 2,
+                "formation": "3-4-2-1",
+                "lineup": [],
+                "bench": []
+            },
+            "awayTeam": {
+                "id": 9,
+                "name": "Hertha BSC",
+                "shortName": "Hertha BSC",
+                "tla": "BSC",
+                "crest": "https://crests.football-data.org/9.svg",
+                "coach": {
+                    "id": 156101,
+                    "name": "Felix Magath",
+                    "nationality": "Germany"
+                },
+                "leagueRank": 15,
+                "formation": "4-2-3-1",
+                "lineup": [],
+                "bench": []
+            },
+            "score": {
+                "winner": "HOME_TEAM",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "home": 2,
+                    "away": 1
+                },
+                "halfTime": {
+                    "home": 0,
+                    "away": 1
+                }
+            },
