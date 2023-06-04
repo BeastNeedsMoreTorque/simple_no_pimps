@@ -5,8 +5,8 @@ import axios from 'axios'
 import _ from 'lodash';
 import pimps from './shared/pimps_long.json';
 import {calculateStandings} from './shared/helpers2'
-import {rankStandings} from './shared/ranked_standings'
-import {myStandingsTable} from './shared/moreRanking'
+// import {rankStandings} from './shared/ranked_standings'
+// import {myStandingsTable} from './shared/moreRanking'
 import {Loader} from './shared/Loader'
 
 const apiKey = process.env.REACT_APP_FOOTBAL_API_KEY;
@@ -78,12 +78,111 @@ function App() {
     console.log("finishedGames: ", finishedGames);
 
   // setStandings(calculateStandings(finishedGames))
-  // const tableStandings = calculateStandings(finishedGames)
-  const tableStandings = myStandingsTable(finishedGames)
+  const tableStandings = calculateStandings(finishedGames)
+  // const tableStandings = myStandingsTable(finishedGames)
   console.log("tableStandings: ", JSON.stringify(tableStandings,null,2))
   
   // console.log("rankStandings: ", JSON.stringify(rankStandings(tableStandings), null,2));
 
+  // return (
+  //   <div className='App container mx-auto max-w-screen-xl px-2'>
+  //     <h2 className='"text-2xl w-full" px-2 pt-8 pb-8 text-center font-extrabold md:text-4xl lg:text-5xl'>
+  //       EPL - English Pimp-Less League
+  //     </h2>
+  //     {isLoading ? (
+  //       <Loader />
+  //     ) : (
+  //       <table className='w-full text-base'>
+  //         <thead className='border-b'>
+  //           <tr className='text-left'>
+  //             <th>Position</th>
+  //             <th className='team-header'>Team</th>
+  //             <th className='p-1 pb-2 text-center'>Rank</th>
+  //             <th className='p-1 pb-2 text-center'>GP</th>
+  //             <th className='p-1 pb-2 text-center'>W</th>
+  //             <th className='p-1 pb-2 text-center'>D</th>
+  //             <th className='p-1 pb-2 text-center'>L</th>
+  //             <th className='p-1 pb-2 text-center'>F</th>
+  //             <th className='p-1 pb-2 text-center'>A</th>
+  //             <th className='p-1 pb-2 text-center'>GD</th>
+  //             <th className='p-1 pb-2 text-center'>Pts</th>
+  //             <th className='hidden p-1 pb-2 text-center md:table-cell'>
+  //               FORM
+  //             </th>
+  //           </tr>
+  //         </thead>
+  //         <tbody>
+  //           {tableStandings.map((match, index) => (
+  //             <tr
+  //               className='border-b bg-white text-left transition duration-300 ease-in-out hover:bg-gray-100'
+  //               key={index}>
+  //               <td className='border-b bg-white p-1 text-left'>{index + 1}</td>
+  //               {index + 1 === 1 ? (
+  //                 <td className='border-b bg-white p-1 text-left font-bold text-green-400'>
+  //                   {match.team}
+  //                 </td>
+  //               ) : index + 1 === 12 || index + 1 === 13 || index + 1 === 14 ? (
+  //                 <td className='border-b bg-white p-1 text-left font-semibold text-red-300'>
+  //                   {match.team}
+  //                 </td>
+  //               ) : match.team === 'West Ham United FC' ? (
+  //                 <td className='border-b bg-white p-1 text-left text-xl font-extrabold text-burgundy'>
+  //                   {match.team}
+  //                 </td>
+  //               ) : (
+  //                 <td className='border-b bg-white p-1 text-left'>
+  //                   {match.team}
+  //                 </td>
+  //               )}
+  //               <td className='p-1 text-center'>
+  //                 <div>
+  //                   { _.takeRight(match.pointsArray, 2).map(p => (
+  //                     p[0] < p[1] ? 'up' : p[0] > p[1] ? 'dwn' : '-' 
+  //                   ))
+  //                   }
+  //                 </div>
+  //               </td>
+  //               <td className='p-1 text-center'>{match.games}</td>
+  //               <td className='p-1 text-center'>{match.wins}</td>
+  //               <td className='p-1 text-center'>{match.draws}</td>
+  //               <td className='p-1 text-center'>{match.losses}</td>
+  //               <td className='p-1 text-center'>{match.goalsFor}</td>
+  //               <td className='p-1 text-center'>{match.goalsAgainst}</td>
+  //               <td className='p-1 text-center'>
+  //                 {match.goalsFor - match.goalsAgainst}
+  //               </td>
+  //               <td className='p-1 text-center'>{match.points}</td>
+  //               <td className='hidden p-1 text-center md:table-cell'>
+  //                 <div className='flex w-full items-center justify-center'>
+  //                   {_.takeRight(match.form, 5).map((f) =>
+  //                     f === 'w' ? (
+  //                       <div className='mx-0.5 mb-2 h-3 w-1 rounded bg-green-500'></div>
+  //                     ) : f === 'l' ? (
+  //                       <div className='mx-0.5 mt-2 h-3 w-1 rounded bg-red-500'></div>
+  //                     ) : (
+  //                       <div className='mx-0.5 mb-1 h-1 w-1 rounded bg-gray-500'></div>
+  //                     )
+  //                   )}
+  //                 </div>
+  //                 {/* <td className='p-1 text-center'>
+  //                 {_.takeRight(match.form, 5)}
+  //               </td> */}
+  //               </td>
+  //             </tr>
+  //           ))}
+  //           {/* {standings.map((s, index) => (
+  //           <tr key={index}>
+  //             <td>{s.homeTeam}</td>
+  //             <td>{s.homeGoals}</td>
+  //           </tr>
+  //         ))} */}
+  //         </tbody>
+  //       </table>
+  //     )}
+  //   </div>
+  // );
+
+  //previous version of return
   return (
     <div className='App container mx-auto max-w-screen-xl px-2'>
       <h2 className='"text-2xl w-full" px-2 pt-8 pb-8 text-center font-extrabold md:text-4xl lg:text-5xl'>
@@ -97,7 +196,6 @@ function App() {
             <tr className='text-left'>
               <th>Position</th>
               <th className='team-header'>Team</th>
-              <th className='p-1 pb-2 text-center'>Rank</th>
               <th className='p-1 pb-2 text-center'>GP</th>
               <th className='p-1 pb-2 text-center'>W</th>
               <th className='p-1 pb-2 text-center'>D</th>
@@ -134,15 +232,7 @@ function App() {
                     {match.team}
                   </td>
                 )}
-                <td className='p-1 text-center'>
-                  <div>
-                    { _.takeRight(match.pointsArray, 2).map(p => (
-                      p[0] < p[1] ? 'up' : p[0] > p[1] ? 'dwn' : '-' 
-                    ))
-                    }
-                  </div>
-                </td>
-                <td className='p-1 text-center'>{match.games}</td>
+                <td className='p-1 text-center'>{match.gp}</td>
                 <td className='p-1 text-center'>{match.wins}</td>
                 <td className='p-1 text-center'>{match.draws}</td>
                 <td className='p-1 text-center'>{match.losses}</td>

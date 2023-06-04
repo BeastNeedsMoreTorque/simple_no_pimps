@@ -67,11 +67,11 @@ export const calculateStandings = (matches) => {
         result[match.awayTeam].wins += 1;
         result[match.awayTeam].form.push('w');
       }
-      result[match.homeTeam].goalsFor += match.homeGoals;
-      result[match.homeTeam].goalsAgainst += match.awayGoals;
+      result[match.homeTeam].goalsFor += match.homeScore;
+      result[match.homeTeam].goalsAgainst += match.awayScore;
       result[match.homeTeam].gp += 1;
-      result[match.awayTeam].goalsFor += match.awayGoals;
-      result[match.awayTeam].goalsAgainst += match.homeGoals;
+      result[match.awayTeam].goalsFor += match.awayScore;
+      result[match.awayTeam].goalsAgainst += match.homeScore;
       result[match.awayTeam].gp += 1;
       return result;
     },

@@ -18,7 +18,7 @@ const options = {
 };
 const BASE_URL = 'https://api.football-data.org/v2/';
 
-function App() {
+function App2() {
   const [data, loading] = useFetch(
     `${BASE_URL}competitions/2021/matches`,
     options
@@ -162,4 +162,4 @@ function App() {
   );
 }
 
-export default App;
+export default App2;
