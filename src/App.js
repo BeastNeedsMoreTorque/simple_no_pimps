@@ -5,6 +5,7 @@ import axios from 'axios'
 import _ from 'lodash';
 import pimps from './shared/pimps_long.json';
 import {calculateStandings} from './shared/helpers2'
+// import { calculateStandings } from './shared/helpersFunctional';
 // import {rankStandings} from './shared/ranked_standings'
 // import {myStandingsTable} from './shared/moreRanking'
 import {Loader} from './shared/Loader'

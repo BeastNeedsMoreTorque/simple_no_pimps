@@ -1,5 +1,6 @@
 import { flow, set, reduce, values, sortBy, reverse } from 'lodash/fp';
 
+// this doesnt work properly -> West Ham is number 1
 export const calculateStandings = (matches) => {
   const initialStandings = reduce(
     (result, match) => {
