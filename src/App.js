@@ -32,7 +32,7 @@ function App() {
     const fetchMatches = async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}competitions/2021/matches`,
+          `${BASE_URL}competitions/2021/matches?season=2022`,
           options
         );
         const results = response.data.matches.filter(
@@ -192,7 +192,8 @@ function App() {
       {isLoading ? (
         <Loader />
       ) : (
-        <table className='w-full text-base'>
+        <div className='overflow-x-auto'>
+        <table className='table w-full text-base'>
           <thead className='border-b'>
             <tr className='text-left'>
               <th>Position</th>
@@ -213,23 +214,23 @@ function App() {
           <tbody>
             {tableStandings.map((match, index) => (
               <tr
-                className='border-b bg-white text-left transition duration-300 ease-in-out hover:bg-gray-100'
+                className='text-left transition duration-300 ease-in-out hover:bg-gray-500'
                 key={index}>
-                <td className='border-b bg-white p-1 text-left'>{index + 1}</td>
+                <td className='p-1 text-left'>{index + 1}</td>
                 {index + 1 === 1 ? (
-                  <td className='border-b bg-white p-1 text-left font-bold text-green-400'>
+                  <td className='p-1 text-left font-bold text-green-400'>
                     {match.team}
                   </td>
                 ) : index + 1 === 12 || index + 1 === 13 || index + 1 === 14 ? (
-                  <td className='border-b bg-white p-1 text-left font-semibold text-red-300'>
+                  <td className='p-1 text-left font-semibold text-red-300'>
                     {match.team}
                   </td>
                 ) : match.team === 'West Ham United FC' ? (
-                  <td className='border-b bg-white p-1 text-left text-xl font-extrabold text-burgundy'>
+                  <td className='p-1 text-left text-xl font-extrabold text-burgundy'>
                     {match.team}
                   </td>
                 ) : (
-                  <td className='border-b bg-white p-1 text-left'>
+                  <td className='p-1 text-left'>
                     {match.team}
                   </td>
                 )}
@@ -269,6 +270,7 @@ function App() {
           ))} */}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );
