@@ -8,6 +8,7 @@ export const calculateStandings = (matches) => {
       return _.flow(
         _.set([match.homeTeam], {
           team: match.homeTeam,
+          crest: match.homeCrest,
           gp: 0,
           wins: 0,
           draws: 0,
@@ -20,6 +21,7 @@ export const calculateStandings = (matches) => {
         }),
         _.set([match.awayTeam], {
           team: match.awayTeam,
+          crest: match.awayCrest,
           gp: 0,
           wins: 0,
           draws: 0,

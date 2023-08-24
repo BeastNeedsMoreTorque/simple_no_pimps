@@ -69,6 +69,8 @@ function App() {
         name: m.stage,
         awayTeam: m.awayTeam.name,
         homeTeam: m.homeTeam.name,
+        awayCrest: m.awayTeam.crest,
+        homeCrest: m.homeTeam.crest,
         status: m.status,
         outcome: m.score.winner,
         //dataDay: dataDay,
