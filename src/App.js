@@ -16,8 +16,6 @@ const options = {
   method: 'GET',
   headers: {
     'X-Auth-Token': apiKey,
-    // 'X-Auth-Token': '6514a50db6064d86a774da3072668946'
-    // 'X-Auth-Token': '44eb0a7017df45e7ae6bbb80d4448'
   },
 };
 const BASE_URL = 'https://api.football-data.org/v2/';
