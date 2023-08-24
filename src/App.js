@@ -10,12 +10,14 @@ import {calculateStandings} from './shared/helpers2'
 // import {myStandingsTable} from './shared/moreRanking'
 import {Loader} from './shared/Loader'
 
-const apiKey = process.env.REACT_APP_FOOTBAL_API_KEY;
+const apiKey = process.env.REACT_APP_FOOTBALL_API_KEY;
 
 const options = {
   method: 'GET',
   headers: {
     'X-Auth-Token': apiKey,
+    // 'X-Auth-Token': '6514a50db6064d86a774da3072668946'
+    // 'X-Auth-Token': '44eb0a7017df45e7ae6bbb80d4448'
   },
 };
 const BASE_URL = 'https://api.football-data.org/v2/';
@@ -49,11 +51,13 @@ function App() {
     fetchMatches();
   }, []);
 
+  console.log(matches);
+
   function gameStatus(x) {
     return x === 'FINISHED';
   }
 
-  // console.log("matches: ", matches);
+  console.log("matches: ", matches);
 
   //format results data for processing/calculating
   const finishedGames = matches
@@ -187,7 +191,7 @@ function App() {
   return (
     <div className='App container mx-auto max-w-screen-xl px-2'>
       <h2 className='"text-2xl w-full" px-2 pt-8 pb-8 text-center font-extrabold md:text-4xl lg:text-5xl'>
-        EPL - English Pimp-Less League
+        EPL {/*- English Pimp-Less League */}
       </h2>
       {isLoading ? (
         <Loader />
